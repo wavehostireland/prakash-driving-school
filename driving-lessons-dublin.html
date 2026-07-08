@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PAGE TITLE: shown in the browser tab and as the clickable headline in Google search results -->
+    <title>Driving Lessons Dublin | EDT &amp; Pre-Test Lessons | Prakash Driving School</title>
+    <!-- META DESCRIPTION: the grey summary text shown under the title in Google search results -->
+    <meta name="description" content="Driving lessons in Dublin with Prakash Driving School - EDT, beginner, pre-test, refresher and nervous driver lessons, manual or automatic. Book today.">
+    <meta name="keywords" content="driving lessons dublin, driving instructor dublin, EDT dublin, learn to drive dublin city, driving school dublin ireland">
+    <meta name="author" content="Prakash Driving School">
+    <!-- CANONICAL URL: tells search engines the "official" address of this page (EDIT SITE_URL in build2.py once live) -->
+    <link rel="canonical" href="https://www.prakashdrivingschool.ie/driving-lessons-dublin.html">
+
+    <!-- OPEN GRAPH TAGS: control how this page looks when shared on Facebook/LinkedIn/WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Driving Lessons Dublin | EDT &amp; Pre-Test Lessons | Prakash Driving School">
+    <meta property="og:description" content="Driving lessons in Dublin with Prakash Driving School - EDT, beginner, pre-test, refresher and nervous driver lessons, manual or automatic. Book today.">
+    <meta property="og:url" content="https://www.prakashdrivingschool.ie/driving-lessons-dublin.html">
+    <meta property="og:image" content="https://www.prakashdrivingschool.ie/images/og-image.jpg">
+    <meta property="og:locale" content="en_IE">
+
+    <!-- TWITTER CARD TAGS: control how this page looks when shared on Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Driving Lessons Dublin | EDT &amp; Pre-Test Lessons | Prakash Driving School">
+    <meta name="twitter:description" content="Driving lessons in Dublin with Prakash Driving School - EDT, beginner, pre-test, refresher and nervous driver lessons, manual or automatic. Book today.">
+    <meta name="twitter:image" content="https://www.prakashdrivingschool.ie/images/og-image.jpg">
+
+    <!-- FAVICON: small browser-tab icon, replace files inside /favicon to change it -->
+    <link rel="icon" type="image/png" href="favicon/favicon-32.png">
+
+    <!-- GOOGLE FONT: Poppins, used everywhere via --font-main in css/style.css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME: icon library (car, phone, WhatsApp, star icons, etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- OUR STYLESHEETS: main styles, then responsive/mobile overrides -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- SCHEMA.ORG STRUCTURED DATA: helps Google understand this is a local driving school business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Prakash Driving School",
+      "image": "https://www.prakashdrivingschool.ie/images/og-image.jpg",
+      "telephone": "+353871234567",
+      "email": "info@prakashdrivingschool.ie",
+      "url": "https://www.prakashdrivingschool.ie/",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dublin",
+        "addressCountry": "IE"
+      },
+      "areaServed": "Dublin, Ireland",
+      "openingHours": "Mo-Sa 08:00-20:00"
+    }
+    </script>
+</head>
+<body>
+    <!-- Page loader: full-screen spinner shown briefly while the page loads -->
+    <div class="page-loader" id="page-loader"><div class="loader-spinner"></div></div>
+
+    <!-- Topbar: quick contact details, hidden on small phones via responsive.css -->
+    <div class="topbar">
+        <div class="container">
+            <div class="topbar-left">
+                <a href="tel:+353871234567"><i class="fa-solid fa-phone"></i> 087 123 4567</a>
+                <a href="mailto:info@prakashdrivingschool.ie"><i class="fa-solid fa-envelope"></i> info@prakashdrivingschool.ie</a>
+            </div>
+            <div class="topbar-right">Learn Safe. Drive Safe. Stay Safe.</div>
+        </div>
+    </div>
+
+    <!-- Header: sticky logo + navigation, stays pinned to the top while scrolling -->
+    <header class="site-header">
+        <div class="container">
+            <!-- LOGO: steering-wheel icon + two-line "PRAKASH / DRIVING SCHOOL" text -->
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-wheel"></i></span>
+                <span class="logo-text">
+                    <span class="l1">PRAKASH</span>
+                    <span class="l2">DRIVING SCHOOL</span>
+                </span>
+            </a>
+            <!-- MAIN NAV: turns into a slide-down mobile menu below 900px width (see responsive.css) -->
+            <nav class="main-nav" id="main-nav">
+                <a href="index.html" class="">Home</a>
+                <a href="about.html" class="">About</a>
+                <a href="services.html" class="">Services</a>
+                <a href="pricing.html" class="">Pricing</a>
+                <a href="booking.html" class="">Booking</a>
+                <a href="quiz.html" class="">Quiz</a>
+                <a href="faq.html" class="">FAQ</a>
+                <a href="contact.html" class="">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <!-- CALL NOW BUTTON: EDIT the phone number in build2.py (PHONE_TEL / PHONE_DISPLAY) to update everywhere -->
+                <a href="tel:+353871234567" class="btn btn-yellow btn-sm btn-lg-desktop"><i class="fa-solid fa-phone"></i> Call Now</a>
+                <!-- HAMBURGER: only visible on mobile/tablet widths -->
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+<!-- Page Hero: short navy banner shown at the top of every inner page -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Driving Lessons in Dublin</h1>
+            <div class="breadcrumb"><a href="index.html">Home</a> / Driving Lessons Dublin</div>
+        </div>
+        <!-- Background car animation: dashed road + car silhouette driving left-to-right on a loop -->
+                <div class="road-lane"></div>
+                <div class="car-drive" aria-hidden="true">
+                    <svg viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+                        <!-- car body -->
+                        <path d="M8 34 L14 18 Q18 12 28 12 L78 12 Q86 12 90 18 L100 30 L112 32 Q116 33 116 37 L116 40 L4 40 L4 37 Q4 35 8 34 Z" fill="#FFC107"/>
+                        <!-- window cutout -->
+                        <path d="M30 16 L74 16 Q80 16 84 22 L88 28 L34 28 Z" fill="#071A34" opacity="0.85"/>
+                        <!-- rear wheel -->
+                        <circle cx="28" cy="41" r="7" fill="#071A34"/><circle cx="28" cy="41" r="3" fill="#FFC107"/>
+                        <!-- front wheel -->
+                        <circle cx="92" cy="41" r="7" fill="#071A34"/><circle cx="92" cy="41" r="3" fill="#FFC107"/>
+                        <!-- headlight -->
+                        <circle cx="111" cy="33" r="2.4" fill="#ffffff"/>
+                    </svg>
+                </div>
+    </section>
+
+    <section class="section">
+        <div class="container" style="max-width:900px;">
+            <div class="section-title reveal">
+                <span class="eyebrow">Dublin's Driving School</span>
+                <h2>Driving Lessons in Dublin with Prakash Driving School</h2>
+            </div>
+            <p style="margin-bottom:20px;">Looking for driving lessons in Dublin? Prakash Driving School provides one-to-one lessons across Dublin city and surrounding areas, covering everything from your first 12 EDT lessons to final pre-test preparation. Every lesson is built around real Dublin roads and RSA test routes, so you learn exactly what test day will feel like.</p>
+            <p style="margin-bottom:20px;">Whether you're a complete beginner, a nervous driver, or brushing up with a refresher course before re-testing, lessons are tailored to your pace, in either a manual or automatic dual-control car.</p>
+            <ul class="about-list" style="margin-bottom:30px;">
+                <li><i class="fa-solid fa-check"></i> Essential Driver Training (EDT) - the mandatory 12-lesson programme for learner permit holders</li>
+                <li><i class="fa-solid fa-check"></i> Pre-test and mock test lessons around Dublin RSA test centres</li>
+                <li><i class="fa-solid fa-check"></i> Nervous driver and refresher lessons at a pace that suits you</li>
+                <li><i class="fa-solid fa-check"></i> Flexible scheduling across Dublin, weekdays and weekends</li>
+            </ul>
+            <div style="text-align:center;">
+                <a href="booking.html" class="btn btn-yellow btn-lg">Book Your Dublin Driving Lesson</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-title reveal">
+                <span class="eyebrow">Our Services</span>
+                <h2>Popular Lessons for Dublin Learners</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-img-wrap">
+                        <!-- EDIT IMAGE HERE: replace images/lesson-edt.jpg with your own photo of this lesson type -->
+                        <img src="images/lesson-edt.jpg" alt="EDT 12 Lessons - Prakash Driving School Dublin" loading="lazy">
+                    </div>
+                    <div class="service-icon"><i class="fa-solid fa-car"></i></div>
+                    <div class="service-body">
+                        <h3>EDT 12 Lessons</h3>
+                        <p>Essential Driver Training - 12 lessons program.</p>
+                        <a href="booking.html" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-img-wrap">
+                        <!-- EDIT IMAGE HERE: replace images/lesson-beginner.jpg with your own photo of this lesson type -->
+                        <img src="images/lesson-beginner.jpg" alt="Beginner Lessons - Prakash Driving School Dublin" loading="lazy">
+                    </div>
+                    <div class="service-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                    <div class="service-body">
+                        <h3>Beginner Lessons</h3>
+                        <p>Perfect for new learners starting their journey.</p>
+                        <a href="booking.html" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-img-wrap">
+                        <!-- EDIT IMAGE HERE: replace images/lesson-pretest.jpg with your own photo of this lesson type -->
+                        <img src="images/lesson-pretest.jpg" alt="Pre-Test Lessons - Prakash Driving School Dublin" loading="lazy">
+                    </div>
+                    <div class="service-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <div class="service-body">
+                        <h3>Pre-Test Lessons</h3>
+                        <p>Get fully prepared and test-ready.</p>
+                        <a href="booking.html" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-img-wrap">
+                        <!-- EDIT IMAGE HERE: replace images/lesson-refresher.jpg with your own photo of this lesson type -->
+                        <img src="images/lesson-refresher.jpg" alt="Refresher Lessons - Prakash Driving School Dublin" loading="lazy">
+                    </div>
+                    <div class="service-icon"><i class="fa-solid fa-rotate"></i></div>
+                    <div class="service-body">
+                        <h3>Refresher Lessons</h3>
+                        <p>Brush up your skills and drive with confidence.</p>
+                        <a href="booking.html" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-img-wrap">
+                        <!-- EDIT IMAGE HERE: replace images/lesson-nervous.jpg with your own photo of this lesson type -->
+                        <img src="images/lesson-nervous.jpg" alt="Nervous Drivers - Prakash Driving School Dublin" loading="lazy">
+                    </div>
+                    <div class="service-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                    <div class="service-body">
+                        <h3>Nervous Drivers</h3>
+                        <p>Patient and friendly training for nervous drivers.</p>
+                        <a href="booking.html" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-img-wrap">
+                        <!-- EDIT IMAGE HERE: replace images/lesson-mocktest.jpg with your own photo of this lesson type -->
+                        <img src="images/lesson-mocktest.jpg" alt="Mock Test - Prakash Driving School Dublin" loading="lazy">
+                    </div>
+                    <div class="service-icon"><i class="fa-solid fa-flag-checkered"></i></div>
+                    <div class="service-body">
+                        <h3>Mock Test</h3>
+                        <p>Mock test to simulate the real driving test.</p>
+                        <a href="booking.html" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-img-wrap">
+                        <!-- EDIT IMAGE HERE: replace images/lesson-licence.jpg with your own photo of this lesson type -->
+                        <img src="images/lesson-licence.jpg" alt="Full Licence Prep - Prakash Driving School Dublin" loading="lazy">
+                    </div>
+                    <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
+                    <div class="service-body">
+                        <h3>Full Licence Prep</h3>
+                        <p>Complete preparation for your driving test.</p>
+                        <a href="booking.html" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer: brand + quick links + services + contact info + newsletter -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon"><i class="fa-solid fa-wheel"></i></span>
+                        <span>PRAKASH<br><small style="font-size:.6rem;letter-spacing:2px;">DRIVING SCHOOL</small></span>
+                    </div>
+                    <p class="footer-desc">Professional driving lessons in Dublin, Ireland. Learn safe, drive safe, stay safe.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://wa.me/353871234567" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="booking.html">Booking</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <!-- SEO landing page: kept out of the main nav on purpose, linked here for search engines + visitors -->
+                        <li><a href="driving-lessons-dublin.html">Driving Lessons Dublin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">EDT 12 Lessons</a></li>
+                        <li><a href="services.html">Beginner Lessons</a></li>
+                        <li><a href="services.html">Pre-Test Lessons</a></li>
+                        <li><a href="services.html">Refresher Lessons</a></li>
+                        <li><a href="services.html">Nervous Drivers</a></li>
+                        <li><a href="services.html">Mock Test</a></li>
+                        <li><a href="services.html">Full Licence Prep</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <!-- EDIT CONTACT DETAILS HERE (also update TOPBAR / header() in build2.py) -->
+                        <li><i class="fa-solid fa-phone"></i> 087 123 4567</li>
+                        <li><i class="fa-solid fa-envelope"></i> info@prakashdrivingschool.ie</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Dublin, Ireland</li>
+                        <li><i class="fa-solid fa-clock"></i> Mon - Sun: 8:00 AM - 8:00 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="font-size:.85rem;margin-bottom:12px;">Subscribe to get updates and driving tips.</p>
+                    <form id="newsletter-form">
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email address" required aria-label="Email address">
+                            <button type="submit">Subscribe</button>
+                        </div>
+                        <div class="form-success" style="margin-top:12px;">Thanks for subscribing!</div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; <span class="current-year"></span> Prakash Driving School. All Rights Reserved.</div>
+                <div><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms &amp; Conditions</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp button: CHANGE WHATSAPP NUMBER HERE by editing WHATSAPP_NUMBER in build2.py -->
+    <a href="https://wa.me/353871234567" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="wa-tooltip">Chat on WhatsApp</span>
+    </a>
+    <!-- Back to top button: hidden until the visitor scrolls down (see script.js) -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- JavaScript: no libraries, just our own two files -->
+    <script src="js/script.js"></script>
+    
+</body>
+</html>

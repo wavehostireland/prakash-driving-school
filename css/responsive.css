@@ -1,0 +1,76 @@
+/* =====================================================================
+   PRAKASH DRIVING SCHOOL — RESPONSIVE STYLESHEET (responsive.css)
+   -----------------------------------------------------------------
+   Loaded AFTER style.css, so every rule here OVERRIDES the desktop
+   layout at smaller screen widths. Organised from largest breakpoint
+   (1100px, laptops) down to smallest (480px, small phones).
+===================================================================== */
+
+/* ============ LAPTOP / SMALL DESKTOP (<= 1100px) ============ */
+@media (max-width: 1100px) {
+    .services-grid { grid-template-columns: repeat(4, 1fr); }   /* POSITION - 7 service cards wrap to 4 per row */
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }     /* POSITION - pricing cards wrap to 2 per row */
+    .testimonial-track { grid-template-columns: repeat(2, 1fr); } /* POSITION - testimonials wrap to 2 per row */
+    .footer-grid { grid-template-columns: 1fr 1fr; }              /* POSITION - footer columns wrap to a 2x2-ish grid */
+    .trust-grid { grid-template-columns: repeat(2, 1fr); row-gap: 20px; } /* POSITION - trust strip wraps to 2x2 */
+    .trust-item { border-right: none; }                            /* removes the divider lines once items wrap */
+}
+
+/* ============ TABLET (<= 900px) ============ */
+@media (max-width: 900px) {
+    :root { --header-height: 76px; } /* SIZE - slightly shorter header on tablets to save vertical space */
+
+    /* HAMBURGER MENU: hide the inline nav links, show the hamburger button instead */
+    .main-nav {
+        position: fixed;                                  /* POSITION - slides over the page as a full panel */
+        top: calc(var(--header-height) + var(--topbar-height));
+        left: 0; right: 0;
+        background: var(--color-white);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 24px 20px;
+        box-shadow: var(--shadow-md);
+        transform: translateY(-12px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity .25s ease, transform .25s ease, visibility .25s ease; /* ANIMATION - dropdown open/close */
+    }
+    .main-nav.open {
+        transform: translateY(0);   /* ANIMATION/POSITION - slides down into view */
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    .main-nav a { padding: 14px 6px; border-bottom: 1px solid var(--color-border); } /* POSITION - full-width stacked links with dividers */
+    .hamburger { display: flex; }              /* shows the hamburger icon (hidden on desktop) */
+    .header-actions .btn-lg-desktop { display: none; } /* hides the desktop "Call Now" button; kept in the mobile menu instead */
+
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }    /* POSITION - about section stacks into one column */
+    .about-media { order: -1; }                                /* POSITION - image moves above the text on mobile */
+    .form-grid { grid-template-columns: 1fr; }                  /* POSITION - form fields stack into one column */
+    .contact-info-grid { grid-template-columns: 1fr; }           /* POSITION - contact cards stack into one column */
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+}
+
+/* ============ SMALL TABLET / LARGE PHONE (<= 768px) ============ */
+@media (max-width: 768px) {
+    .section { padding: 60px 0; }         /* POSITION - shorter vertical spacing between sections on mobile */
+    .hero { min-height: 82vh; }            /* SIZE - slightly shorter hero on phones */
+    .hero-content { max-width: 100%; }
+    .hero-buttons .btn { flex: 1 1 auto; justify-content: center; } /* POSITION - hero buttons stretch to fill width evenly */
+    .services-grid { grid-template-columns: repeat(2, 1fr); }  /* POSITION - service cards wrap to 2 per row */
+    .pricing-grid { grid-template-columns: 1fr; }                /* POSITION - pricing cards stack to 1 per row */
+    .testimonial-track { grid-template-columns: 1fr; }            /* POSITION - testimonials stack to 1 per row */
+}
+
+/* ============ PHONE (<= 480px) ============ */
+@media (max-width: 480px) {
+    .topbar-right { display: none; }  /* hides the tagline text on the topbar to save space; phone/email stay visible */
+    .services-grid { grid-template-columns: 1fr; }  /* POSITION - service cards fully stack, 1 per row */
+    .footer-grid { grid-template-columns: 1fr; }      /* POSITION - footer columns fully stack, 1 per row */
+    .quiz-card { padding: 24px 18px; }                 /* POSITION - tighter padding on the quiz card for small screens */
+    .whatsapp-float { width: 52px; height: 52px; font-size: 1.4rem; bottom: 86px; } /* SIZE - slightly smaller floating button */
+    .back-to-top { width: 42px; height: 42px; }
+}

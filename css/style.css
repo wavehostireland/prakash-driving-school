@@ -1,0 +1,649 @@
+/* =====================================================================
+   PRAKASH DRIVING SCHOOL — MAIN STYLESHEET (style.css)
+   -----------------------------------------------------------------
+   HOW THIS FILE IS ORGANISED (search for these ALL-CAPS headings):
+   1. CSS VARIABLES        - edit colours / fonts HERE
+   2. RESET / BASE STYLES
+   3. UTILITIES             - buttons, containers, section titles
+   4. TOPBAR + HEADER / NAV
+   5. HERO SECTION + CAR ANIMATION
+   6. TRUST STRIP
+   7. SERVICES / CARDS
+   8. ABOUT SECTION
+   9. PRICING
+   10. TESTIMONIALS
+   11. FAQ ACCORDION
+   12. BOOKING / CONTACT FORMS
+   13. FOOTER
+   14. FLOATING BUTTONS (WhatsApp + Back to Top)
+   15. LOADING SPINNER
+   16. QUIZ PAGE
+   17. 404 / ERROR PAGE
+   Mobile-only overrides live in css/responsive.css, not here.
+===================================================================== */
+
+/* ============ 1. CSS VARIABLES ============
+   Change any colour/font here and it updates across the ENTIRE website. */
+:root {
+    --color-primary: #005BAC;        /* MAIN BRAND BLUE - logo, links, icons, headings accents */
+    --color-primary-dark: #003B73;   /* Darker blue - button hover states */
+    --color-navy: #071A34;           /* DEEP NAVY - topbar, hero overlay, trust strip, testimonials, footer backgrounds */
+    --color-navy-light: #10284A;     /* Slightly lighter navy - testimonial card backgrounds */
+    --color-secondary: #FFC107;      /* ACCENT YELLOW - CTA buttons, eyebrow labels on dark backgrounds, stars */
+    --color-secondary-dark: #e0a800; /* Darker yellow - hover state on yellow buttons */
+    --color-white: #ffffff;          /* White - backgrounds, text on dark colours */
+    --color-dark-grey: #22262b;      /* DARK GREY - body text colour */
+    --color-light-grey: #f4f6f9;     /* Light grey - alternating section backgrounds */
+    --color-mid-grey: #6c7480;       /* Medium grey - secondary / muted text */
+    --color-border: #e6e9ee;         /* Light border colour used on cards/inputs */
+    --color-success: #1e7e34;        /* Green - correct quiz answers / form success message */
+    --color-danger: #c82333;         /* Red - wrong quiz answers */
+    --color-whatsapp: #25D366;       /* WhatsApp brand green - floating button */
+
+    --font-main: 'Poppins', sans-serif; /* MAIN FONT - change here to swap the whole site's typeface */
+
+    --radius-sm: 8px;    /* SHAPE - small rounded corners (inputs, badges) */
+    --radius-md: 14px;   /* SHAPE - medium rounded corners (cards) */
+    --radius-lg: 50px;   /* SHAPE - fully rounded / pill buttons */
+
+    --shadow-sm: 0 2px 10px rgba(7,26,52,.08);   /* subtle shadow for cards */
+    --shadow-md: 0 12px 30px rgba(7,26,52,.16);  /* stronger shadow for hovered cards */
+
+    --container-width: 1200px;  /* POSITION - max width of centred page content */
+    --header-height: 88px;      /* SIZE - height of the main sticky nav (topbar sits above this) */
+    --topbar-height: 42px;      /* SIZE - height of the thin dark topbar strip */
+}
+
+/* ============ 2. RESET / BASE STYLES ============ */
+* { margin: 0; padding: 0; box-sizing: border-box; } /* removes default browser spacing; box-sizing includes padding+border in width/height */
+
+html {
+    scroll-behavior: smooth; /* ANIMATION - smooth scrolling for in-page anchor links (e.g. FAQ, homepage sections) */
+    scroll-padding-top: calc(var(--header-height) + var(--topbar-height)); /* POSITION - stops the sticky header covering scrolled-to sections */
+}
+
+body {
+    font-family: var(--font-main);   /* FONT - body text typeface (Poppins) */
+    color: var(--color-dark-grey);   /* COLOUR - default text colour */
+    line-height: 1.65;                /* spacing between lines, improves readability */
+    background: var(--color-white);   /* COLOUR - default page background */
+    overflow-x: hidden;                /* POSITION - prevents horizontal scroll from animated/positioned elements */
+}
+
+img { max-width: 100%; display: block; }         /* SIZE - images never overflow their container */
+a { color: inherit; text-decoration: none; }      /* removes default blue/underline link styling */
+ul { list-style: none; }                           /* removes bullet points; icons are added manually where needed */
+button { font-family: inherit; }
+
+h1, h2, h3, h4 {
+    font-family: var(--font-main);
+    font-weight: 700;                 /* WEIGHT - bold headings */
+    line-height: 1.25;
+    color: var(--color-dark-grey);     /* COLOUR - default heading colour (overridden to white on dark sections) */
+}
+
+/* Accessibility: visible keyboard-focus outline on interactive elements */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--color-secondary); /* COLOUR - yellow focus ring, clearly visible for keyboard users */
+    outline-offset: 2px;
+}
+
+/* ============ 3. UTILITIES ============ */
+.container {
+    width: 100%;
+    max-width: var(--container-width); /* POSITION - centres content, caps width on large screens */
+    margin: 0 auto;                     /* POSITION - horizontal centring */
+    padding: 0 24px;                     /* POSITION - side gutters on smaller screens */
+}
+
+.section { padding: 90px 0; }                          /* POSITION - consistent vertical spacing between sections */
+.section-alt { background: var(--color-light-grey); }  /* COLOUR - light grey background for alternating sections */
+.section-navy { background: var(--color-navy); color: rgba(255,255,255,.85); } /* COLOUR - deep navy section background (trust strip, testimonials) */
+.section-navy h2, .section-navy h3 { color: var(--color-white); } /* COLOUR - white headings on navy sections */
+
+.section-title { text-align: center; max-width: 680px; margin: 0 auto 50px; }
+.eyebrow {
+    display: inline-block;
+    color: var(--color-primary);      /* COLOUR - blue eyebrow label, used on LIGHT backgrounds (e.g. "OUR SERVICES") */
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: .82rem;
+    margin-bottom: 10px;
+}
+.eyebrow-light {
+    color: var(--color-secondary);    /* COLOUR - yellow eyebrow label, used on DARK/navy backgrounds (e.g. hero, testimonials) */
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: .82rem;
+    margin-bottom: 10px;
+}
+.section-title h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+.section-title p { color: var(--color-mid-grey); margin-top: 12px; } /* COLOUR - muted grey supporting text */
+
+/* Buttons: rounded "pill" shape, two colour styles (yellow solid + outline) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 32px;
+    border-radius: var(--radius-lg);   /* SHAPE - fully rounded pill button */
+    font-weight: 600;
+    font-size: .98rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease; /* ANIMATION - smooth hover feedback */
+}
+.btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); } /* ANIMATION/POSITION - lifts button slightly on hover */
+.btn-yellow { background: var(--color-secondary); color: var(--color-navy); } /* COLOUR - solid yellow button (main CTA, e.g. "Book a Lesson") */
+.btn-yellow:hover { background: var(--color-secondary-dark); }
+.btn-outline-white { background: transparent; border-color: rgba(255,255,255,.8); color: var(--color-white); } /* COLOUR - transparent + white outline, used on dark hero */
+.btn-outline-white:hover { background: var(--color-white); color: var(--color-navy); }
+.btn-blue { background: var(--color-primary); color: var(--color-white); } /* COLOUR - solid blue button */
+.btn-blue:hover { background: var(--color-primary-dark); }
+.btn-outline-blue { background: transparent; border-color: var(--color-primary); color: var(--color-primary); } /* COLOUR - blue outline on light backgrounds */
+.btn-outline-blue:hover { background: var(--color-primary); color: var(--color-white); }
+.btn-block { width: 100%; justify-content: center; }
+.btn-lg { padding: 17px 38px; font-size: 1.02rem; }
+.btn-sm { padding: 10px 20px; font-size: .85rem; }
+
+/* Generic fade/slide-up scroll animation; ".in-view" is added by script.js via IntersectionObserver */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in-view { opacity: 1; transform: translateY(0); } /* POSITION - settles into its normal spot once revealed */
+@media (prefers-reduced-motion: reduce) {
+    .reveal, .btn, .car-drive, .whatsapp-float { transition: none !important; animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* ============ 4. TOPBAR + HEADER / NAV ============ */
+.topbar {
+    height: var(--topbar-height);
+    background: var(--color-navy);          /* COLOUR - deep navy thin strip above the main nav */
+    color: rgba(255,255,255,.85);
+    font-size: .85rem;
+}
+.topbar .container { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.topbar-left { display: flex; gap: 26px; }
+.topbar-left a:hover { color: var(--color-secondary); } /* COLOUR - yellow hover on phone/email links */
+.topbar-right { color: rgba(255,255,255,.65); }
+
+.site-header {
+    position: fixed;                                /* POSITION - keeps header pinned while scrolling (sticky nav) */
+    top: var(--topbar-height); left: 0; right: 0;     /* POSITION - sits directly under the topbar */
+    height: var(--header-height);
+    background: var(--color-white);                    /* COLOUR - white nav background */
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;                                       /* POSITION (stacking) - stays above all page content */
+}
+.site-header .container { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo .logo-icon {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    border: 2.5px solid var(--color-primary); /* COLOUR - blue ring around the steering-wheel logo icon */
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-primary);
+    font-size: 1.3rem;
+}
+.logo-text { line-height: 1.15; }
+.logo-text .l1 { display: block; font-weight: 800; color: var(--color-primary); font-size: 1.15rem; letter-spacing: .5px; } /* COLOUR - "PRAKASH" in blue */
+.logo-text .l2 { display: block; font-weight: 600; color: var(--color-dark-grey); font-size: .68rem; letter-spacing: 2px; } /* COLOUR - "DRIVING SCHOOL" in dark grey */
+
+.main-nav { display: flex; align-items: center; gap: 4px; }
+.main-nav a {
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: .95rem;
+    color: var(--color-dark-grey);   /* COLOUR - default nav link text */
+    border-radius: var(--radius-sm);
+    transition: color .25s ease;
+}
+.main-nav a:hover, .main-nav a.active { color: var(--color-primary); } /* COLOUR - blue on hover / current page, matches reference design */
+
+.header-actions { display: flex; align-items: center; gap: 16px; }
+
+/* Hamburger button - hidden on desktop, shown on mobile via responsive.css */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.hamburger span {
+    width: 26px; height: 3px;
+    background: var(--color-primary);   /* COLOUR - hamburger bar colour */
+    border-radius: 2px;
+    transition: transform .3s ease, opacity .3s ease; /* ANIMATION - morphs into an "X" when the menu opens */
+}
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* ============ 5. HERO SECTION + CAR ANIMATION ============ */
+.hero {
+    position: relative;                                              /* POSITION - lets overlay/car/carousel-controls sit on top */
+    min-height: 88vh;
+    display: flex; align-items: center;                                /* POSITION - vertically centres hero text */
+    margin-top: calc(var(--header-height) + var(--topbar-height));      /* POSITION - pushes hero below the fixed header+topbar */
+    overflow: hidden;                                                    /* POSITION - hides the car icon once it drives off either edge */
+    color: var(--color-white);
+}
+.hero-slide {
+    position: absolute; inset: 0;    /* POSITION - each slide fills the whole hero area */
+    background-size: cover; background-position: center;
+    opacity: 0;                        /* hidden by default */
+    transition: opacity 1s ease;        /* ANIMATION - crossfade between slides */
+    z-index: 0;
+}
+.hero-slide.active { opacity: 1; }  /* shows the current slide */
+/* EDIT IMAGE HERE: replace the url() below (or the inline style in each HTML file) with your own photo */
+#hero-slide-1 { background-image: linear-gradient(120deg, rgba(7,26,52,.15), rgba(7,26,52,.15)), url('../images/hero-driving.jpg'); }
+#hero-slide-2 { background-image: linear-gradient(120deg, rgba(7,26,52,.15), rgba(7,26,52,.15)), url('../images/hero-night-driving.jpg'); }
+#hero-slide-3 { background-image: linear-gradient(120deg, rgba(7,26,52,.15), rgba(7,26,52,.15)), url('../images/hero-test-pass.jpg'); }
+.hero-overlay {
+    position: absolute; inset: 0;   /* POSITION - covers the whole hero, above the photo slides */
+    /* COLOUR - deep navy gradient overlay so white hero text stays readable; edit rgba() values to change darkness */
+    background: linear-gradient(100deg, rgba(7,26,52,.88), rgba(0,91,172,.45));
+    z-index: 1;
+}
+.hero-content { position: relative; z-index: 2; max-width: 640px; } /* POSITION - sits above the overlay via z-index */
+.hero-content .eyebrow-light { margin-bottom: 18px; }
+.hero-content h1 { font-size: clamp(2rem, 4.6vw, 3.3rem); margin-bottom: 18px; color: var(--color-white); } /* COLOUR - white headline */
+.hero-content p { font-size: 1.08rem; margin-bottom: 32px; color: rgba(255,255,255,.88); max-width: 540px; } /* COLOUR - near-white subheading */
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* Carousel prev/next arrows + dot indicators (vanilla JS controlled, see script.js) */
+.hero-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);  /* POSITION - vertically centred on the hero */
+    width: 46px; height: 46px;
+    background: rgba(255,255,255,.15);
+    border: none; border-radius: 50%;
+    color: var(--color-white);
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 3;
+    transition: background .25s ease;
+}
+.hero-arrow:hover { background: rgba(255,255,255,.3); }
+.hero-arrow.prev { left: 24px; }   /* POSITION - left edge of the hero */
+.hero-arrow.next { right: 24px; }  /* POSITION - right edge of the hero */
+.hero-dots { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; } /* POSITION - centred row of dots near the bottom of the hero */
+.hero-dots button {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: none; background: rgba(255,255,255,.45); cursor: pointer;
+    transition: background .25s ease, width .25s ease;
+}
+.hero-dots button.active { background: var(--color-secondary); width: 26px; border-radius: var(--radius-lg); } /* COLOUR - yellow, widens to a pill for the active dot */
+
+/* Animated car + dashed road line driving along the bottom of the hero (decorative background animation) */
+.road-lane {
+    position: absolute;                 /* POSITION - sits above the hero photo/overlay */
+    left: 0; right: 0; bottom: 92px;      /* POSITION - distance from the hero's bottom edge; raise/lower here */
+    height: 4px;
+    z-index: 2;
+    /* COLOUR - dashed white line, drawn using a repeating gradient (no image file needed) */
+    background-image: repeating-linear-gradient(to right, rgba(255,255,255,.5) 0 26px, transparent 26px 48px);
+}
+.car-drive {
+    position: absolute;        /* POSITION - floats above the road line */
+    bottom: 80px;                /* POSITION - lifts the car so its wheels sit on the dashed line */
+    left: -14%;                   /* POSITION - starting point, just off-screen to the left */
+    z-index: 2;
+    width: 110px;                  /* SIZE - width of the car icon; height scales automatically */
+    animation: driveAcross 13s linear infinite; /* ANIMATION - drives left-to-right, 13s per loop, repeats forever */
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,.35)); /* soft shadow under the car for depth */
+}
+.car-drive svg { width: 100%; height: auto; display: block; }
+@keyframes driveAcross {
+    0%   { left: -14%; }   /* POSITION - animation start (off-screen left) */
+    100% { left: 108%; }   /* POSITION - animation end (off-screen right), then loops back to 0% */
+}
+@media (max-width: 576px) {
+    .car-drive { width: 66px; }    /* SIZE - smaller car on phones */
+    .road-lane { bottom: 70px; }    /* POSITION - road sits a little higher on phones (less hero height) */
+    .hero-arrow { display: none; }   /* hides prev/next arrows on very small screens to reduce clutter */
+}
+
+/* Smaller "page hero" banner used at the top of every inner page (About, Services, Pricing, etc.) */
+.page-hero {
+    position: relative;
+    margin-top: calc(var(--header-height) + var(--topbar-height)); /* POSITION - sits below the fixed header+topbar */
+    padding: 80px 0 60px;
+    text-align: center;
+    color: var(--color-white);
+    background: linear-gradient(100deg, var(--color-navy), var(--color-primary-dark)); /* COLOUR - navy-to-blue gradient banner */
+    overflow: hidden;
+}
+.page-hero h1 { color: var(--color-white); font-size: clamp(1.7rem, 3.8vw, 2.4rem); }
+.page-hero .breadcrumb { margin-top: 12px; color: rgba(255,255,255,.8); font-size: .92rem; }
+.page-hero .breadcrumb a { color: var(--color-secondary); } /* COLOUR - yellow "Home" breadcrumb link */
+.page-hero .road-lane { bottom: 14px; }  /* POSITION - car animation road sits near the bottom of this shorter banner */
+.page-hero .car-drive { bottom: 6px; width: 80px; }
+
+/* ============ 6. TRUST STRIP (4-column highlight bar directly under the hero) ============ */
+.trust-strip { padding: 26px 0; }
+.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.trust-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 6px 24px;
+    border-right: 1px solid rgba(255,255,255,.12); /* COLOUR - faint divider line between trust items */
+}
+.trust-item:last-child { border-right: none; }
+.trust-item i {
+    width: 46px; height: 46px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,.1);   /* COLOUR - faint white circle behind each trust icon */
+    color: var(--color-white);            /* COLOUR - white trust icons */
+    border-radius: 50%;
+    font-size: 1.15rem;
+}
+.trust-item h4 { color: var(--color-white); font-size: .98rem; margin-bottom: 2px; }
+.trust-item p { color: rgba(255,255,255,.65); font-size: .82rem; }
+
+/* ============ 7. SERVICES / CARDS ============ */
+.services-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 18px; } /* POSITION - 7 cards across on large desktop, matches reference */
+.service-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);          /* SHAPE - rounded card corners */
+    overflow: visible;                          /* lets the circular icon badge overlap the image edge */
+    box-shadow: var(--shadow-sm);
+    transition: transform .3s ease, box-shadow .3s ease; /* ANIMATION - hover lift */
+    text-align: center;
+}
+.service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); } /* ANIMATION/POSITION - lifts card on hover */
+.service-card .service-img-wrap { position: relative; border-radius: var(--radius-md) var(--radius-md) 0 0; overflow: hidden; height: 120px; }
+.service-card .service-img-wrap img { width: 100%; height: 100%; object-fit: cover; } /* SIZE - fills the image area, cropped to fit */
+.service-icon {
+    width: 46px; height: 46px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--color-primary);     /* COLOUR - solid blue circular icon badge */
+    color: var(--color-white);
+    border-radius: 50%;
+    font-size: 1.1rem;
+    margin: -23px auto 10px;                 /* POSITION - pulls the badge up so it overlaps the image/body boundary */
+    border: 4px solid var(--color-white);      /* COLOUR - white ring separating the badge from the image behind it */
+    position: relative; z-index: 2;
+}
+.service-body { padding: 4px 16px 22px; }
+.service-card h3 { font-size: .98rem; margin-bottom: 8px; }
+.service-card p { color: var(--color-mid-grey); font-size: .82rem; margin-bottom: 14px; }
+.service-card .learn-more { color: var(--color-primary); font-weight: 600; font-size: .85rem; display: inline-flex; align-items: center; gap: 6px; } /* COLOUR - blue "Learn More" link */
+.service-card .learn-more:hover { gap: 10px; } /* ANIMATION - arrow nudges further right on hover */
+
+/* ============ 8. ABOUT SECTION ============ */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-media { position: relative; } /* POSITION - lets a small badge overlap the main photo if desired later */
+.about-media img { border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+.about-list { margin: 20px 0 26px; display: grid; gap: 12px; }
+.about-list li { display: flex; align-items: flex-start; gap: 12px; font-size: .95rem; }
+.about-list i {
+    width: 22px; height: 22px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--color-primary);   /* COLOUR - small solid blue circular checkmark */
+    color: var(--color-white);
+    border-radius: 50%;
+    font-size: .7rem;
+    margin-top: 2px;
+}
+
+/* ============ 9. PRICING ============ */
+.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+.pricing-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-border); /* COLOUR - light grey border, turns blue on the featured plan below */
+    border-radius: var(--radius-md);
+    padding: 36px 26px;
+    text-align: center;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.pricing-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.pricing-card.featured { border-color: var(--color-primary); position: relative; } /* COLOUR - highlighted plan border */
+.pricing-card.featured::before {
+    content: "Most Popular";
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%); /* POSITION - centred ribbon above the card */
+    background: var(--color-secondary); color: var(--color-navy);           /* COLOUR - yellow "Most Popular" ribbon */
+    padding: 6px 16px; border-radius: var(--radius-lg); font-size: .75rem; font-weight: 700;
+}
+/* EDIT PRICE HERE: change the number inside .price on each pricing page/card */
+.pricing-card .price { font-size: 2.2rem; font-weight: 700; color: var(--color-primary); margin: 14px 0 4px; } /* COLOUR - large blue price */
+.pricing-card .price span { font-size: .95rem; color: var(--color-mid-grey); font-weight: 400; }
+.pricing-card ul { margin: 20px 0; display: grid; gap: 10px; text-align: left; font-size: .9rem; }
+.pricing-card ul i { color: var(--color-primary); margin-right: 8px; } /* COLOUR - blue checkmarks in pricing feature lists */
+
+/* ============ 10. TESTIMONIALS ============ */
+.testimonial-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.testimonial-card {
+    background: var(--color-navy-light);  /* COLOUR - slightly lighter navy card on the dark testimonials section */
+    border-radius: var(--radius-md);
+    padding: 26px 22px;
+}
+.testimonial-card .stars { color: var(--color-secondary); margin-bottom: 12px; font-size: .85rem; } /* COLOUR - yellow star rating icons */
+.testimonial-card p { font-size: .9rem; color: rgba(255,255,255,.85); margin-bottom: 18px; } /* COLOUR - off-white quote text */
+.testimonial-student { display: flex; align-items: center; gap: 10px; }
+.testimonial-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--color-primary); color: var(--color-white); /* COLOUR - blue circular initials avatar */
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; flex-shrink: 0;
+}
+.testimonial-student .name { color: var(--color-white); font-weight: 600; font-size: .9rem; } /* COLOUR - white student name */
+.testimonial-controls { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 34px; }
+.testimonial-controls button {
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: rgba(255,255,255,.1); color: var(--color-white); cursor: pointer;
+}
+.testimonial-dots { display: flex; gap: 8px; }
+.testimonial-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.35); display: inline-block; }
+.testimonial-dots span.active { background: var(--color-secondary); } /* COLOUR - yellow active dot */
+
+/* ============ 11. FAQ ACCORDION ============ */
+.faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: 14px; }
+.faq-item { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+.faq-question {
+    width: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px;
+    background: none; border: none; cursor: pointer;
+    font-weight: 600; font-size: 1rem; text-align: left;
+    color: var(--color-dark-grey);
+}
+.faq-question i { color: var(--color-primary); transition: transform .3s ease; } /* ANIMATION - chevron icon rotates when opened */
+.faq-item.open .faq-question i { transform: rotate(180deg); }
+.faq-answer {
+    max-height: 0;                                   /* POSITION/ANIMATION - collapsed by default, expanded height set inline by JS */
+    overflow: hidden;
+    transition: max-height .35s ease, padding .35s ease; /* ANIMATION - smooth expand/collapse */
+    padding: 0 24px;
+    color: var(--color-mid-grey);
+    font-size: .93rem;
+}
+.faq-item.open .faq-answer { padding: 0 24px 20px; }
+
+/* ============ 12. BOOKING / CONTACT FORMS ============ */
+.form-card { background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 40px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+.form-group.full { grid-column: 1 / -1; } /* POSITION - lets a field span both columns (e.g. the message textarea) */
+.form-group label { font-weight: 600; font-size: .88rem; }
+.form-group input, .form-group select, .form-group textarea {
+    padding: 14px 16px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-sm);   /* SHAPE - slightly rounded input corners */
+    font-size: .93rem;
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--color-primary);              /* COLOUR - blue border on focus */
+    box-shadow: 0 0 0 3px rgba(0,91,172,.15);          /* COLOUR - soft blue focus glow */
+    outline: none;
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.radio-group { display: flex; gap: 20px; flex-wrap: wrap; }
+.radio-group label { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: .9rem; }
+
+/* Honeypot spam-trap field: invisible to real visitors, catches automated form spam */
+.hp-field { position: absolute; left: -9999px; top: -9999px; opacity: 0; height: 0; width: 0; pointer-events: none; }
+
+.contact-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 46px; }
+.contact-info-card { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 28px 22px; text-align: center; box-shadow: var(--shadow-sm); }
+.contact-info-card i {
+    width: 54px; height: 54px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    background: var(--color-primary); color: var(--color-white); /* COLOUR - solid blue circular icon */
+    border-radius: 50%; font-size: 1.25rem;
+}
+.map-wrap { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); margin-bottom: 46px; }
+.map-wrap iframe { width: 100%; height: 380px; border: 0; display: block; } /* SIZE - map height, EDIT src in HTML for your real address */
+
+/* Success / thank-you notice shown after a form submits */
+.form-success {
+    display: none;
+    background: #e6f6ea;
+    border: 1px solid var(--color-success);
+    color: var(--color-success);             /* COLOUR - green success message */
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: .92rem;
+}
+.form-success.show { display: block; }
+
+/* ============ 13. FOOTER ============ */
+.site-footer { background: #050f1e; color: rgba(255,255,255,.75); padding: 64px 0 0; } /* COLOUR - near-black navy footer background */
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1.3fr; gap: 34px; padding-bottom: 46px; }
+.footer-col h4 { color: var(--color-white); margin-bottom: 18px; font-size: 1rem; } /* COLOUR - white footer column headings */
+.footer-col ul { display: grid; gap: 9px; font-size: .88rem; }
+.footer-col a:hover { color: var(--color-secondary); } /* COLOUR - yellow highlight on footer link hover */
+.footer-desc { font-size: .88rem; margin: 12px 0 16px; }
+.footer-logo { display: flex; align-items: center; gap: 10px; color: var(--color-white); font-weight: 700; font-size: 1.1rem; }
+.footer-logo .logo-icon { border-color: var(--color-secondary); color: var(--color-secondary); } /* COLOUR - yellow ring around footer steering-wheel icon */
+.footer-social { display: flex; gap: 10px; margin-top: 6px; }
+.footer-social a {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.2);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .25s ease, border-color .25s ease;
+}
+.footer-social a:hover { background: var(--color-primary); border-color: var(--color-primary); } /* COLOUR - blue highlight on hover */
+.newsletter-form { display: flex; margin-top: 4px; }
+.newsletter-form input { flex: 1; padding: 12px 14px; border: none; border-radius: var(--radius-sm) 0 0 var(--radius-sm); font-size: .85rem; }
+.newsletter-form button { background: var(--color-secondary); color: var(--color-navy); border: none; padding: 0 18px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-weight: 700; cursor: pointer; } /* COLOUR - yellow subscribe button */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding: 20px 0;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    font-size: .82rem;
+}
+.footer-bottom a:hover { color: var(--color-secondary); }
+
+/* ============ 14. FLOATING BUTTONS ============ */
+/* CHANGE WHATSAPP NUMBER HERE: edit the href="https://wa.me/..." on the <a class="whatsapp-float"> element in every HTML file */
+.whatsapp-float {
+    position: fixed;                 /* POSITION - stays in the same screen spot while scrolling */
+    bottom: 96px; right: 26px;         /* POSITION - sits above the back-to-top button, bottom-right corner */
+    width: 58px; height: 58px;
+    background: var(--color-whatsapp);  /* COLOUR - WhatsApp brand green */
+    color: var(--color-white);
+    border-radius: 50%;                  /* SHAPE - perfect circle */
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    z-index: 999;                          /* POSITION (stacking) - floats above all page content */
+    animation: pulse 2.4s infinite;          /* ANIMATION - gentle pulsing ring to draw the eye */
+}
+.whatsapp-float .wa-tooltip {
+    position: absolute; right: 70px; top: 50%; transform: translateY(-50%); /* POSITION - tooltip sits to the left of the bubble */
+    background: var(--color-navy); color: var(--color-white);
+    padding: 6px 14px; border-radius: var(--radius-sm);
+    font-size: .78rem; white-space: nowrap;
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s ease;
+}
+.whatsapp-float:hover .wa-tooltip { opacity: 1; } /* ANIMATION - tooltip fades in on hover */
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(37,211,102,.55); }  /* ANIMATION - pulse ring start */
+    70%  { box-shadow: 0 0 0 16px rgba(37,211,102,0); }   /* ANIMATION - ring expands and fades out */
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+.back-to-top {
+    position: fixed;                  /* POSITION - stays in place while scrolling */
+    bottom: 26px; right: 26px;          /* POSITION - bottom-right corner, below the WhatsApp bubble */
+    width: 48px; height: 48px;
+    background: var(--color-primary);    /* COLOUR - solid blue circle */
+    color: var(--color-white);
+    border: none;
+    border-radius: 50%;
+    display: none;                        /* hidden until the visitor scrolls down (revealed by script.js) */
+    align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+    transition: background .25s ease;
+}
+.back-to-top:hover { background: var(--color-primary-dark); } /* COLOUR - darker blue on hover */
+
+/* ============ 15. LOADING SPINNER ============ */
+.page-loader {
+    position: fixed; inset: 0;                 /* POSITION - covers the entire screen */
+    background: var(--color-white);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 99999;                              /* POSITION (stacking) - sits above everything while loading */
+    transition: opacity .4s ease, visibility .4s ease;
+}
+.page-loader.hide { opacity: 0; visibility: hidden; } /* ANIMATION - fades out once the window "load" event fires */
+.loader-spinner {
+    width: 52px; height: 52px;
+    border: 5px solid var(--color-light-grey);
+    border-top-color: var(--color-primary);        /* COLOUR - blue spinning segment */
+    border-radius: 50%;
+    animation: spin .8s linear infinite;             /* ANIMATION - continuous rotation */
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============ 16. QUIZ PAGE ============ */
+.quiz-progress { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-weight: 600; font-size: .92rem; }
+.quiz-progress-bar { height: 10px; background: var(--color-light-grey); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 28px; }
+.quiz-progress-fill { height: 100%; width: 0%; background: var(--color-primary); transition: width .35s ease; } /* COLOUR/ANIMATION - blue bar grows as the quiz progresses */
+.quiz-card { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 38px; }
+.quiz-question { font-size: 1.15rem; font-weight: 600; margin-bottom: 24px; }
+.quiz-options { display: grid; gap: 13px; margin-bottom: 24px; }
+.quiz-option {
+    padding: 15px 20px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease;
+    font-weight: 500;
+    font-size: .95rem;
+}
+.quiz-option:hover { border-color: var(--color-primary); } /* COLOUR - blue border highlight on hover */
+.quiz-option.correct { border-color: var(--color-success); background: #e6f6ea; color: var(--color-success); } /* COLOUR - green = correct answer */
+.quiz-option.incorrect { border-color: var(--color-danger); background: #fdeaec; color: var(--color-danger); } /* COLOUR - red = the wrong answer the user picked */
+.quiz-option.disabled { pointer-events: none; opacity: .9; }
+.quiz-explanation {
+    background: var(--color-light-grey);
+    border-left: 4px solid var(--color-primary); /* COLOUR - blue accent stripe on the explanation box */
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 22px;
+    font-size: .9rem;
+    display: none;
+}
+.quiz-explanation.show { display: block; }
+.quiz-result { text-align: center; }
+.quiz-result .score-circle {
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    border: 10px solid var(--color-primary);  /* COLOUR - blue ring around the final score */
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 0 auto 22px;
+}
+.quiz-result .score-circle.fail { border-color: var(--color-danger); } /* COLOUR - turns red if the learner scored below the pass mark */
+.quiz-result .score-circle .score-number { font-size: 2.1rem; font-weight: 700; }
+.quiz-result .pass-badge { color: var(--color-success); font-weight: 700; }   /* COLOUR - green "PASS" label */
+.quiz-result .fail-badge { color: var(--color-danger); font-weight: 700; }    /* COLOUR - red "FAIL" label */
+
+/* ============ 17. 404 / ERROR PAGE ============ */
+.error-page { min-height: 62vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.error-page .code { font-size: 6.5rem; font-weight: 800; color: var(--color-primary); line-height: 1; } /* COLOUR - big blue "404" */
