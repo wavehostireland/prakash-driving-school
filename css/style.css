@@ -273,7 +273,7 @@ select:focus-visible, textarea:focus-visible {
     backface-visibility: hidden;
 }
 .plate-front { color: #E4032E; }
-.plate-back  { color: #1E8A3C; transform: rotateY(180deg); }
+.plate-back  { color: #E4032E; transform: rotateY(180deg); }
 @keyframes flipPlate {
     0%, 40%  { transform: rotateY(0deg); }
     50%, 90% { transform: rotateY(180deg); }
