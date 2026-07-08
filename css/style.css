@@ -258,7 +258,7 @@ select:focus-visible, textarea:focus-visible {
     position: relative;
     width: 100%; height: 100%;
     transform-style: preserve-3d;
-    animation: flipPlate 6s infinite ease-in-out;
+    animation: flipPlate 3s infinite ease-in-out;
 }
 .plate {
     position: absolute; inset: 0;
