@@ -249,6 +249,36 @@ select:focus-visible, textarea:focus-visible {
 .hero-content h1 { font-size: clamp(2rem, 4.6vw, 3.3rem); margin-bottom: 18px; color: var(--color-white); } /* COLOUR - white headline */
 .hero-content p { font-size: 1.08rem; margin-bottom: 32px; color: rgba(255,255,255,.88); max-width: 540px; } /* COLOUR - near-white subheading */
 .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.plate-swap {
+    width: 64px; height: 64px;
+    perspective: 800px;
+    margin-bottom: 22px;
+}
+.plate-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    animation: flipPlate 6s infinite ease-in-out;
+}
+.plate {
+    position: absolute; inset: 0;
+    background: var(--color-white);
+    border: 3px solid var(--color-dark-grey);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: var(--shadow-md);
+    backface-visibility: hidden;
+}
+.plate-front { color: #E4032E; }
+.plate-back  { color: #1E8A3C; transform: rotateY(180deg); }
+@keyframes flipPlate {
+    0%, 40%  { transform: rotateY(0deg); }
+    50%, 90% { transform: rotateY(180deg); }
+    100%     { transform: rotateY(360deg); }
+}
 
 /* Carousel prev/next arrows + dot indicators (vanilla JS controlled, see script.js) */
 .hero-arrow {
